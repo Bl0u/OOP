@@ -10,9 +10,14 @@ public class Main {
 //        Tester.testAbstractClassInheritance() ;
 //        Tester.testInterface() ;
 //        Tester.testScope() ;
+        Tester.testStaticOverriding(); ;
     }
 
     public static class Tester{
+        public static void testStaticOverriding(){
+            Person person = new Customer();
+            person.displayName("Peter", "Emil");
+        }
         public static void testScope(){
             Person person = new Customer();
 //            person.display() ; // error

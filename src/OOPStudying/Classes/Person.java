@@ -9,7 +9,7 @@ public class Person {
         System.out.println("first name: " + first);
     }
     public static void displayName(String first, String last){
-        System.out.println("first name: " + first + "\nlast name: " + last);
+        System.out.println("first name: " + first + "\nlast name: " + last + " from Person");
     }
 
     void test(){

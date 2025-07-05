@@ -130,6 +130,26 @@ person.display(); // Compiler error if display() not in Person even if it does e
 4. **Interface evolution in Java 8+**
     - Default methods enable backward compatibility
     - Static methods provide utility functions
+5. **Why Java isn't 100% object-oriented?**
+   - Because it has primitive data types 'discbblf':
+      - double
+      - int
+      - string
+      - boolean
+      - byte
+      - long
+      - float
+6. **Why pointers aren't used in Java?**
+   - It raises the complexity of the program which directly contradicts Java's intention of maintaining simple code at all times
+   - Also JDK is responsible for all memory allocation, so allowing the user to use pointers violates this responsibility
+7. **Can you override static methods?**
+   - No, static methods cannot be overridden, only hidden
+   - When a child class defines a static method with the same signature as a static method in its parent class, it's called "hiding" not "overriding"
+   - For instance methods, this would be "overriding" and would use the child's implementation
+   - Example: When `Person person = new Customer();` calls `person.displayName()`, the compiler sees a Person reference
+   - Since static methods are resolved based on the reference type (Person), it calls Person's displayName method
+   - The actual object type (Customer) is irrelevant for static method resolution
+   - For detailed explanation, refer to the "Method Hiding" section above
 
 ### Key Points to Remember
 - Interface variables are `public static final` by default
