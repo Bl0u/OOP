@@ -5,4 +5,5 @@ public interface Test {
     default void printName(String Name){
         System.out.println("Name: "+ Name);
     }
+
 }

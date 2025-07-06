@@ -159,4 +159,7 @@ person.display(); // Compiler error if display() not in Person even if it does e
 
 ## References
 - [GeeksforGeeks - Java OOP Concepts](https://www.geeksforgeeks.org/java/object-oriented-programming-oops-concept-in-java/)
+- [GeeksforGeeks - OOP Questions](https://www.geeksforgeeks.org/oops-interview-questions/)
 - [InterviewBit - OOP Interview Questions](https://www.interviewbit.com/oops-interview-questions/)
+- [Java Questions](https://www.youtube.com/watch?v=PwiuAebCruY&list=PLyHJZXNdCXscoyL5XEZoHHZ86_6h3GWE1&index=1)
+- 
