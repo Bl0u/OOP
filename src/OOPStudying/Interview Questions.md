@@ -8,6 +8,7 @@
 - [Why Override `equals()` and `hashCode()`?](#why-override-equals-and-hashcode)
 - [Example 1: HashMap with Default Methods](#example-1-hashmap-with-default-methods)
 - [Example 2: HashMap with Overridden Methods](#example-2-hashmap-with-overridden-methods)
+- [Random topics](#random)
 - [Key Takeaways](#key-takeaways)
 
 ---
@@ -153,10 +154,62 @@ public class HashMapTest {
 
 ---
 
-## Key Takeaways
-
-- **Without Overriding:** HashMap compares keys by memory address (reference), not content.
-- **With Overriding:** HashMap compares keys by logical equality (content), which is usually the desired behavior for custom objects.
-- **Always override both `equals()` and `hashCode()`** when using objects as keys in hash-based collections.
+## Random Questions
+- What is the purpose of the @Override annotation in Java?
+    - it's used to tell the compiler that this method is meant to override a method in superclass or interface
+- What is method hiding
+    - Method hiding happens when a subclass defines a static method with the same signature as a static method in its superclass.
+- Can you override a static method?
+    - no, static isn't polymorphic, they are resolved in compile time not runtime
+- Can you override a private method?
+    - No. Private methods are not visible to subclasses, so they can't be overridden.
+- Does @Override have any effect at runtime?
+    - No. It's a compile-time annotation. It has no effect on how the program behaves at runtime.
+- What is Map in java?
+    - it's a collection of key-value pairs
+- Why Map is an interface
+    - so the implementation can be swapped later easily (HashMap, TreeMap)
+- What is `instanceof` in Java?
+    
+    - The `instanceof` operator is a runtime operator used to check whether a reference points to an object of a specific type (class, subclass, or interface).
+      - s is a reference variable (the thing you have on the left side of an assignment, or just a variable that holds a reference to an object).
+      - t is a type (a class, interface, or an array type).
+    - It returns `true` **only if**:
+        - The reference is **not null**, and
+        - The object can be safely cast to the specified type without causing a `ClassCastException`.
+    
+    **Syntax Example:**
+    ```java
+    Object obj = "Hello, world!";
+    System.out.println(obj instanceof String); // ✅ true
+    String s = (String) obj;                   // ✅ this works fine
+    ```
+    
+    ### Type Compatibility Rules for `instanceof`
+    
+    | Scenario                       | Condition for `instanceof` to be `true`            |
+    |--------------------------------|----------------------------------------------------|
+    | `s` is a class, `t` is a class | `s` must be a subclass of `t` (or the same class)  |
+    | `s` is an interface, `t` is a class | `t` must be an object that implements interface `s`      |
+    | `s` is a class, `t` is an interface | `s` must implement interface `t`                     |
+    | `s` is an interface, `t` is an interface | `t` must be a superinterface of `s`                     |
+    
+    **Notes:**
+    - If the reference is `null`, `instanceof` always returns `false`.
+    - `instanceof` helps prevent `ClassCastException` by allowing you to check type compatibility before casting.
+    
+    **Example with interfaces and classes:**
+    ```java
+    interface Vehicle {}
+    class Car implements Vehicle {}
+    
+    Vehicle v = new Car();
+    System.out.println(v instanceof Car);      // true
+    System.out.println(v instanceof Vehicle);  // true
+    System.out.println(v instanceof Object);   // true
+    System.out.println(v instanceof String);   // false
+    ```
+- What happens internally when using instanceof?
+    - At runtime, the JVM uses the object’s actual class and compares it to the class/interface specified using the internal type hierarchy
 
 ---
