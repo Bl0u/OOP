@@ -1,62 +1,102 @@
-You've raised an excellent question about static method behavior in inheritance. Let's analyze what's happening in your code example:
+# Java Static Methods and Inheritance: Method Hiding vs. Overriding
 
-Java
-public static void testStaticOverriding(){
-Person person = new Customer();
-person.displayName("Peter", "Emil");
-}
-Where both Person and Customer classes have static displayName methods, and the output is "From Person".
+## Table of Contents
+- [Introduction](#introduction)
+- [Static Method Resolution](#static-method-resolution)
+- [Method Hiding vs. Overriding](#method-hiding-vs-overriding)
+- [Code Example and Analysis](#code-example-and-analysis)
+- [How to Call Child Static Methods](#how-to-call-child-static-methods)
+- [Interview Tips on Static Methods](#interview-tips-on-static-methods)
+- [Summary](#summary)
 
-Why "From Person" is displayed
-This behavior occurs because static methods cannot be overridden - they can only be hidden. The key distinction is that static method binding is determined at compile time based on the reference type, not at runtime based on the actual object type.
+---
 
-Important concepts at play here:
-Static Method Resolution:
+## Introduction
 
-Static methods belong to the class, not to instances
-They are resolved based on the compile-time type of the reference, not the runtime type of the object
-This is called "static binding" or "early binding"
-Method Hiding vs. Overriding:
+This document explains the behavior of static methods in Java in the context of inheritance. It provides a clear distinction between **method hiding** (for static methods) and **overriding** (for instance methods), and illustrates the concept with practical code examples.
 
-When a child class defines a static method with the same signature as a static method in its parent class, it's called "hiding" not "overriding"
-For instance methods, this would be "overriding" and would use the child's implementation
-Your Specific Example:
+---
 
-Person person = new Customer(); - The reference type is Person, but the object is a Customer
-When you call person.displayName(), the compiler sees a Person reference
-Since static methods are resolved based on the reference type (Person), it calls Person's displayName method
-The actual object type (Customer) is irrelevant for static method resolution
-Code breakdown:
-Java
+## Static Method Resolution
+
+- **Static methods belong to the class, not to instances.**
+- They are resolved at **compile time** based on the **reference type**, not the actual object type.
+- This is known as **static binding** or **early binding**.
+
+---
+
+## Method Hiding vs. Overriding
+
+- **Static methods with the same signature in a subclass "hide" the parent method.**
+    - This is called **method hiding**, not overriding.
+- **Instance methods** with the same signature in a subclass **override** the parent method.
+    - This is called **overriding** and is resolved at runtime (dynamic binding).
+
+---
+
+## Code Example and Analysis
+
+```java
 class Person {
-public static void displayName(String first, String last) {
-System.out.println("From Person");
-}
+    public static void displayName(String first, String last) {
+        System.out.println("From Person");
+    }
 }
 
 class Customer extends Person {
-public static void displayName(String first, String last) {
-System.out.println("From Customer");
+    public static void displayName(String first, String last) {
+        System.out.println("From Customer");
+    }
 }
-}
-If you want to call Customer's static method, you must use a Customer reference:
 
-Java
+public class TestStatic {
+    public static void testStaticOverriding() {
+        Person person = new Customer();
+        person.displayName("Peter", "Emil"); // Output: "From Person"
+    }
+}
+```
+
+### Why "From Person" is Displayed
+
+- `Person person = new Customer();`
+    - The reference type is `Person`, but the object is actually a `Customer`.
+- `person.displayName("Peter", "Emil");`
+    - The compiler checks the **reference type** (`Person`) for static methods.
+    - Therefore, `Person.displayName` is called, not `Customer.displayName`.
+    - The output is `"From Person"`.
+
+---
+
+## How to Call Child Static Methods
+
+To call the child (`Customer`) version of the static method, use:
+
+```java
 Customer customer = new Customer();
-customer.displayName("Peter", "Emil");  // Outputs: "From Customer"
-Or call it directly on the class:
+customer.displayName("Peter", "Emil"); // Output: "From Customer"
 
-Java
-Customer.displayName("Peter", "Emil");  // Outputs: "From Customer"
-Interview Tips on Static Methods
-This is an excellent interview topic because it tests understanding of:
+// Or call directly on the class:
+Customer.displayName("Peter", "Emil"); // Output: "From Customer"
+```
 
-Method binding mechanisms - static vs. dynamic binding
-Inheritance behavior differences between static and instance methods
-The conceptual difference between class members and instance members
-When asked about this in an interview, emphasize:
+---
 
-Static methods belong to the class, not objects
-Static methods use static binding based on the reference type
-The term "hiding" for static methods vs. "overriding" for instance methods
-That this is a common source of confusion for developers
+## Interview Tips on Static Methods
+
+- **Static methods belong to the class, not objects**
+- **Static method calls are resolved using the reference type (static binding)**
+- **"Hiding"** is the term for static methods; **"overriding"** is for instance methods
+- This behavior is a common source of confusion and an excellent topic in technical interviews
+- Be ready to explain the difference between static and dynamic binding in Java
+
+---
+
+## Summary
+
+- **Static methods cannot be overridden, only hidden.**
+- **Static methods are resolved at compile time using the reference type.**
+- **Instance methods are overridden and resolved at runtime using the object type.**
+- Always call static methods using the class name for clarity.
+
+---
