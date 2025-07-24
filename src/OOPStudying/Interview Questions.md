@@ -215,4 +215,7 @@ public class HashMapTest {
     - Data hiding refers to restricting access to internal object details using access modifiers like private, protected, and public. The goal is to prevent             external interference and protect the integrity of the object.
       Encapsulation is the broader OOP (Object-Oriented Programming) principle of bundling data (fields) and methods that operate on that data into a single unit        usually a class. It enables modularity and enforces data hiding.
 
+- What is the importance of an interface
+    - An interface is super important in programming (especially OOP) because it defines a contract — a blueprint of what a class should do, without dictating how to do it.
+
 ---
