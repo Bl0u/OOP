@@ -217,5 +217,7 @@ public class HashMapTest {
 
 - What is the importance of an interface
     - An interface is super important in programming (especially OOP) because it defines a contract — a blueprint of what a class should do, without dictating how to do it.
+- what is the importance of static method in interface
+    - we can't override the interface static methods. used to offer utiities or helper functions
 
 ---
