@@ -211,5 +211,8 @@ public class HashMapTest {
     ```
 - What happens internally when using instanceof?
     - At runtime, the JVM uses the object’s actual class and compares it to the class/interface specified using the internal type hierarchy
+- What is the difference between data hiding and encapsulation?
+    - Data hiding refers to restricting access to internal object details using access modifiers like private, protected, and public. The goal is to prevent             external interference and protect the integrity of the object.
+      Encapsulation is the broader OOP (Object-Oriented Programming) principle of bundling data (fields) and methods that operate on that data into a single unit        usually a class. It enables modularity and enforces data hiding.
 
 ---
