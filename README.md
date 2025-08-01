@@ -15,5 +15,6 @@ This repository documents my personal journey learning Object-Oriented Programmi
 I believe in learning by documenting. This repository serves as both my personal knowledge base and a potential resource for others on similar learning paths.
 
 ---
-
+https://github.com/GunterMueller/Books-3/blob/master/The%20Object%20Oriented%20Thought%20Process%203rd%20Edition.pdf
+---
 *This is a living document that will grow and evolve as my understanding deepens.*
